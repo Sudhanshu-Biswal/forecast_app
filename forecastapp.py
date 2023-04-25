@@ -61,11 +61,11 @@ try:
     line_chart = alt.Chart(df).mark_line().encode(
     x = 'ds:T',
     y = "y:Q").properties(title="Time series preview").interactive()
-        st.altair_chart(line_chart,use_container_width=True)
+    st.altair_chart(line_chart,use_container_width=True)
 except:
     st.line_chart(df['y'],use_container_width =True,height = 300)
     
- m = Prophet(
+m = Prophet(
     seasonality_mode=seasonality,
     daily_seasonality=daily,
     weekly_seasonality=weekly,
