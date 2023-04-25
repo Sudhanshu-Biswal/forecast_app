@@ -118,13 +118,13 @@ rmses = []  # Store the RMSEs for each params here
 
 # Use cross validation to evaluate all parameters
 for params in all_params:
-m = Prophet(**params).fit(df)  # Fit model with given params
-df_cv = cross_validation(m, initial=initial,
-                                period=period,
-                                horizon=horizon,
-                                parallel="processes")
-df_p = performance_metrics(df_cv, rolling_window=1)
-rmses.append(df_p['rmse'].values[0])
+  m = Prophet(**params).fit(df)  # Fit model with given params
+  df_cv = cross_validation(m, initial=initial,
+                                  period=period,
+                                  horizon=horizon,
+                                  parallel="processes")
+  df_p = performance_metrics(df_cv, rolling_window=1)
+  rmses.append(df_p['rmse'].values[0])
 
 # Find the best parameters
 tuning_results = pd.DataFrame(all_params)
