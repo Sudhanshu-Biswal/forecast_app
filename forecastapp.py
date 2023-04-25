@@ -4,14 +4,14 @@ from streamlit import caching
 import pandas as pd
 import numpy as np
 
-import pystan
-from fbprophet import Prophet
-from fbprophet.plot import add_changepoints_to_plot
-from fbprophet.diagnostics import cross_validation
-from fbprophet.diagnostics import performance_metrics
-from fbprophet.plot import plot_cross_validation_metric
+#import pystan
+from prophet import Prophet
+from prophet.plot import add_changepoints_to_plot
+from prophet.diagnostics import cross_validation
+from prophet.diagnostics import performance_metrics
+from prophet.plot import plot_cross_validation_metric
 import json
-from fbprophet.serialize import model_to_json, model_from_json
+from prophet.serialize import model_to_json, model_from_json
 import holidays
 
 import altair as alt
@@ -178,7 +178,7 @@ if page == "Application":
 
     try:
         if sample:
-            st.markdown("""[download_link](https://gist.github.com/giandata/e0b5c2d2e71d4fd4388295eb5b71aeeb)""")
+            st.markdown("""[download_link](https://github.com/Sudhanshu-Biswal/forecast_app/blob/main/sample_forecast.csv)""")
 
     except:
 
@@ -533,7 +533,7 @@ if page == "Application":
                             st.write(export_forecast.head())
                             export_forecast = export_forecast.to_csv(decimal=',')
                             b64 = base64.b64encode(export_forecast.encode()).decode()
-                            href = f'<a href="data:file/csv;base64,{b64}">Download CSV File</a> (click derecho > guardar como **forecast.csv**)'
+                            href = f'<a href="data:file/csv;base64,{b64}">Download CSV File</a> (click >  **forecast.csv**)'
                             st.markdown(href, unsafe_allow_html=True)
 
                 with col2:
@@ -542,7 +542,7 @@ if page == "Application":
                         try:
                             df_p = df_p.to_csv(decimal=',')
                             b64 = base64.b64encode(df_p.encode()).decode()
-                            href = f'<a href="data:file/csv;base64,{b64}">Download CSV File</a> (click derecho > guardar como **metrics.csv**)'
+                            href = f'<a href="data:file/csv;base64,{b64}">Download CSV File</a> (click > **metrics.csv**)'
                             st.markdown(href, unsafe_allow_html=True)
                         except:
                             st.write("No metrics to export")
@@ -559,15 +559,3 @@ if page == "Application":
             else:
                 st.write("Generate a forecast to download.")
 
-if page == "About":
-    st.image("prophet.png")
-    st.header("About")
-    st.markdown("Official documentation of **[Facebook Prophet](https://facebook.github.io/prophet/)**")
-    st.markdown("Official documentation of **[Streamlit](https://docs.streamlit.io/en/stable/getting_started.html)**")
-    st.write("")
-    st.write("Author:")
-    st.markdown(""" **[Giancarlo Di Donato](https://www.linkedin.com/in/giancarlodidonato/)**""")
-    st.markdown("""**[Source code](https://github.com/giandata/forecast-app)**""")
-
-    st.write("Created on 27/02/2021")
-    st.write("Last updated: **29/04/2021**")
