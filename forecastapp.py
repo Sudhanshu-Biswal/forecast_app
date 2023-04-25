@@ -49,7 +49,6 @@ def prep_data(df):
     return df_input
 
 
-code1 =                        
 st.dataframe(df)
 
 st.write(df.describe())
@@ -61,7 +60,6 @@ try:
 except:
     st.line_chart(df['y'],use_container_width =True,height = 300)
 
-code2 = 
  m = Prophet(
     seasonality_mode=seasonality,
     daily_seasonality=daily,
@@ -81,7 +79,6 @@ future['cap']=cap
 future['floor']=floor
                
 
-code3 = 
 try:     
     df_cv = cross_validation(m, initial=initial,
         period=period, 
@@ -103,7 +100,6 @@ fig4 = plot_cross_validation_metric(df_cv, metric=selected_metric)
 st.write(fig4)
 
 
-code4 = 
 param_grid = {  
             'changepoint_prior_scale': [0.01, 0.1, 0.5],
             'seasonality_prior_scale': [0.1, 1.0, 10.0],
