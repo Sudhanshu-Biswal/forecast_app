@@ -12,7 +12,6 @@ babel==2.11.0
 backcall==0.2.0
 base58==2.1.1
 beautifulsoup4==4.11.1
-blas==1.0
 blaze==0.11.3
 bleach==4.1.0
 blinker==1.4
